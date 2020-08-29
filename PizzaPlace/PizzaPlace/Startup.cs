@@ -40,6 +40,8 @@ namespace PizzaPlace
 
             services.AddScoped<IOfferRepository, OfferRepository>();
             services.AddScoped<IOfferService, OfferService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderService, OrderService>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

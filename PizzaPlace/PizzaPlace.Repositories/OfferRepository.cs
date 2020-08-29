@@ -14,9 +14,31 @@ namespace PizzaPlace.Repositories
             this._context = context;
         }
 
-        public IEnumerable<Offer> GetAll()
+        public void AddMenuItem(MenuItem menuItem)
+        {
+            _context.MenuItems.Add(menuItem);
+            _context.SaveChanges();
+        }
+
+        public void AddOffer(Offer offer)
+        {
+            _context.Offers.Add(offer);
+            _context.SaveChanges();
+        }
+
+        public IEnumerable<MenuItem> GetAllMenuItems()
+        {
+            return _context.MenuItems.ToList();
+        }
+
+        public IEnumerable<Offer> GetAllOffers()
         {
             return _context.Offers.ToList();
+        }
+
+        public MenuItem GetMenuItemById(int id)
+        {
+            return _context.MenuItems.FirstOrDefault(x => x.Id.Equals(id));
         }
     }
 }

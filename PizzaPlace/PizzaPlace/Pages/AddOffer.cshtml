@@ -6,3 +6,23 @@
 
 <h3>Add Offer</h3>
 
+<form asp-page="AddOffer" method="post">
+    <div class="form-group">
+        <label for="Title" asp-for="@Model.Offer.Title" >Title</label>
+        <input type="text" class="form-control" asp-for="@Model.Offer.Title">
+        <span asp-validation-for="@Model.Offer.Title"></span>
+    </div>
+    <div class="form-group">
+        <label for="Description" asp-for="@Model.Offer.Description">Description</label>
+        <input type="text" class="form-control" asp-for="@Model.Offer.Description">
+        <span asp-validation-for="@Model.Offer.Description"></span>
+    </div>
+    <div class="form-group">
+        <label for="Description" asp-for="@Model.Offer.Price">Price</label>
+        <input type="number" class="form-control" asp-for="@Model.Offer.Price">
+        <span asp-validation-for="@Model.Offer.Price"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-warning"> Save </button>
+    </div>
+</form> 

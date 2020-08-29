@@ -1,0 +1,27 @@
+﻿@page
+@model PizzaPlace.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<h1>Menu</h1>
+
+
+<div class="row">
+    @foreach (var menuItem in Model.MenuItems)
+    {
+    <div class="col-md-4">
+        <div class="card">
+            <img class="card-img-top" src="@menuItem.ImageUrl" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@menuItem.Title</h5>
+                <p class="card-text">Price: @menuItem.Price</p>
+                <a class="btn btn-primary" asp-page="Details" asp-route-id="@menuItem.Id">Details</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+
+

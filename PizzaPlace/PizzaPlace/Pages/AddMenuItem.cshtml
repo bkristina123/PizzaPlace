@@ -1,0 +1,29 @@
+﻿@page
+@model PizzaPlace.AddMenuItemModel
+@{
+    ViewData["Title"] = "AddMenuItem";
+}
+
+<h1>Add Menu Item</h1>
+
+<form asp-page="AddMenuItem" method="post">
+    <div class="form-group">
+        <label for="Title" asp-for="@Model.MenuItem.Title">Title</label>
+        <input type="text" class="form-control" asp-for="@Model.MenuItem.Title">
+        <span asp-validation-for="@Model.MenuItem.Title"></span>
+    </div>
+    <div class="form-group">
+        <label for="ImageURl" asp-for="@Model.MenuItem.ImageUrl">Image URL</label>
+        <input type="text" class="form-control" asp-for="@Model.MenuItem.ImageUrl">
+        <span asp-validation-for="@Model.MenuItem.ImageUrl"></span>
+    </div>
+    <div class="form-group">
+        <label for="Price" asp-for="@Model.MenuItem.Price">Price</label>
+        <input type="number" class="form-control" asp-for="@Model.MenuItem.Price">
+        <span asp-validation-for="@Model.MenuItem.Price"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-warning"> Save </button>
+    </div>
+</form>
+

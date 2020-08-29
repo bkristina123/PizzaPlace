@@ -1,6 +1,7 @@
 ﻿using PizzaPlace.Data;
 using PizzaPlace.Repositories.Interfaces;
 using PizzaPlace.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace PizzaPlace.Services
@@ -14,9 +15,30 @@ namespace PizzaPlace.Services
             this._offerRepository = offerRepository;
         }
 
-        public IEnumerable<Offer> GetAll()
+        public void AddMenuItem(MenuItem menuItem)
         {
-           return _offerRepository.GetAll();
+            _offerRepository.AddMenuItem(menuItem);
+        }
+
+        public void AddOffer(Offer offer)
+        {
+            offer.DateCreated = DateTime.Now;
+            _offerRepository.AddOffer(offer);
+        }
+
+        public IEnumerable<MenuItem> GetAllMenuItems()
+        {
+            return _offerRepository.GetAllMenuItems();
+        }
+
+        public IEnumerable<Offer> GetAllOffers()
+        {
+           return _offerRepository.GetAllOffers();
+        }
+
+        public MenuItem GetMenuItemById(int id)
+        {
+            return _offerRepository.GetMenuItemById(id);
         }
     }
 }

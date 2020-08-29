@@ -6,21 +6,21 @@ using PizzaPlace.ViewModels;
 
 namespace PizzaPlace
 {
-    public class AddOfferModel : PageModel
+    public class AddMenuItemModel : PageModel
     {
         private readonly IOfferService _offerService;
 
         [BindProperty]
-        public OfferViewModel Offer { get; set; }
+        public MenuItemViewModel MenuItem { get; set; }
 
-        public AddOfferModel(IOfferService offerService) 
+        public AddMenuItemModel(IOfferService offerService)
         {
             this._offerService = offerService;
         }
 
         public IActionResult OnGet()
         {
-            Offer = new OfferViewModel();
+            MenuItem = new MenuItemViewModel();
             return Page();
         }
 
@@ -28,7 +28,7 @@ namespace PizzaPlace
         {
             if (ModelState.IsValid)
             {
-                _offerService.AddOffer(Offer.ConvertToOfferEntity());
+                _offerService.AddMenuItem(MenuItem.ConvertToMenuItemEntity());
                 return RedirectToPage("Success");
             }
 

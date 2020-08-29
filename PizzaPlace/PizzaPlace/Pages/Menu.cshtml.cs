@@ -5,24 +5,23 @@ using PizzaPlace.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PizzaPlace.Pages
+namespace PizzaPlace
 {
-    public class IndexModel : PageModel
+    public class MenuModel : PageModel
     {
         private readonly IOfferService _offerService;
 
-        public List<OfferViewModel> Offers { get; set; }
+        public List<MenuItemViewModel> MenuItems { get; set; }
 
-        public IndexModel(IOfferService offerService)
+        public MenuModel(IOfferService offerService)
         {
-            Offers = new List<OfferViewModel>();
             this._offerService = offerService;
         }
 
         public void OnGet()
         {
-            Offers = _offerService.GetAllOffers()
-                .Select(x => x.ConvertToOfferViewModel())
+           MenuItems = _offerService.GetAllMenuItems().
+                Select(x => x.ConvertToMenuItemViewModel())
                 .ToList();
         }
     }
