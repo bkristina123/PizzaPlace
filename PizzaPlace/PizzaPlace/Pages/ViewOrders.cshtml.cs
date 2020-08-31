@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using PizzaPlace.Data;
 using PizzaPlace.Services.Interfaces;
 using System.Collections.Generic;
@@ -19,6 +20,12 @@ namespace PizzaPlace
         public void OnGet()
         {
             Orders = orderService.GetAllOrders();
+        }
+
+        public IActionResult OnGetSetProcessed(int id)
+        {
+            orderService.UpdateOrder(id);
+            return RedirectToPage();
         }
     }
 }

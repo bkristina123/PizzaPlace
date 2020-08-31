@@ -30,5 +30,16 @@ namespace PizzaPlace.Repositories
         {
             return context.Orders.ToList();
         }
+
+        public Order GetOrderById(int id)
+        {
+            return context.Orders.FirstOrDefault(x => x.Id.Equals(id));
+        }
+
+        public void UpdateOrder(Order order)
+        {
+            context.Orders.Update(order);
+            context.SaveChanges();
+        }
     }
 }

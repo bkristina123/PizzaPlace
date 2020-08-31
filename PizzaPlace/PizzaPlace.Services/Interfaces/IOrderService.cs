@@ -8,5 +8,7 @@ namespace PizzaPlace.Services.Interfaces
         void AddOrder(Order order);
         void AddSubscription(string email);
         IEnumerable<Order> GetAllOrders();
+        Order GetOrderById(int id);
+        void UpdateOrder(int id);
     }
 }

@@ -31,7 +31,9 @@
             else
             {
                 <td>
-                    <a class="btn btn-warning">Process Order</a>
+                 <a asp-page-handler="SetProcessed" asp-route-id="@order.Id" class="btn btn-warning btn-sm">
+                  Process Order
+                 </a> 
                 </td>
             }
         </tr>

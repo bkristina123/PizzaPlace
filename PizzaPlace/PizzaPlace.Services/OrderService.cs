@@ -21,14 +21,29 @@ namespace PizzaPlace.Services
 
         public void AddSubscription(string email)
         {
-            var subscription = new Subscription();
-            subscription.Email = email;
+            var subscription = new Subscription
+            {
+                Email = email
+            };
             orderRepository.AddSubscription(subscription);
         }
 
         public IEnumerable<Order> GetAllOrders()
         {
             return orderRepository.GetAllOrders();
+        }
+
+        public Order GetOrderById(int id)
+        {
+            return orderRepository.GetOrderById(id);
+        }
+
+        public void UpdateOrder(int id)
+        {
+            Order order = orderRepository.GetOrderById(id);
+
+            order.IsProcessed = true;
+            orderRepository.UpdateOrder(order);
         }
     }
 }
