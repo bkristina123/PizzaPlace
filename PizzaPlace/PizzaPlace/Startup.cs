@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -36,6 +37,10 @@ namespace PizzaPlace
             services.AddDbContext<PizzaPlaceDbContext>(options => {
                 options.UseSqlServer(Configuration.GetConnectionString("PizzaPlace"));
             });
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<PizzaPlaceDbContext>()
+                .AddDefaultTokenProviders();
 
 
             services.AddScoped<IOfferRepository, OfferRepository>();
