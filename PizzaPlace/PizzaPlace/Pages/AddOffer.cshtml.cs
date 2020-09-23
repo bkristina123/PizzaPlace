@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PizzaPlace.Common.Helpers;
 using PizzaPlace.Services.Interfaces;
@@ -6,6 +7,7 @@ using PizzaPlace.ViewModels;
 
 namespace PizzaPlace
 {
+    [Authorize]
     public class AddOfferModel : PageModel
     {
         private readonly IOfferService _offerService;
@@ -16,11 +18,12 @@ namespace PizzaPlace
         public AddOfferModel(IOfferService offerService) 
         {
             this._offerService = offerService;
+            Offer = new OfferViewModel();
+
         }
 
         public IActionResult OnGet()
         {
-            Offer = new OfferViewModel();
             return Page();
         }
 
